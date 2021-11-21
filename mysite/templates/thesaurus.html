@@ -1,0 +1,41 @@
+<section class = "page-section ">
+<center>
+<h1 class = "section_title page-section-heading" id = "thesaurus">Thesaurus</h1>
+
+<!-- Icon Divider-->
+<div class="divider-custom">
+    <div class="divider-custom-line"></div>
+    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+    <div class="divider-custom-line"></div>
+</div>
+
+<div class="form-group  mb-3 wrap_form">
+    <p>
+    <label for="exampleInputEmail1">Find synonyms</label>
+    <P>
+    <input type="text" class="form-control" id="synonyms_input" aria-describedby="synonymsHelp" placeholder="Find synonyms">
+    <small id="sybnonymsHelp" class="form-text text-muted">Level UPP your vocabs</small>
+  </div>
+
+<div class="form-group  mb-3">
+<button type="Translate" class="btn btn-secondary" onclick="loadSynonyms()">Find Synonyms</button>
+<p id="synonym_result"></p>
+
+</div>
+</center>
+</section>
+
+
+<script>
+function loadSynonyms() {
+  const xhttp = new XMLHttpRequest();
+
+  var text_to_translate = document.getElementById("synonyms_input").value;
+  xhttp.onload = function() {
+    document.getElementById("synonym_result").innerHTML = this.responseText;
+  }
+  xhttp.open("POST", "thesaurus.asp");
+  xhttp.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
+  xhttp.send(text_to_translate);
+}
+</script>

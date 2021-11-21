@@ -1,0 +1,69 @@
+<section class="page-section bg-primary text-white mb-0" id="translator">
+  <center>
+    <h1 class = "section_title page-section-heading">Translator</h1>
+
+    <!-- Icon Divider-->
+    <div class="divider-custom">
+        <div class="divider-custom-line"></div>
+        <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+        <div class="divider-custom-line"></div>
+    </div>
+
+    <div class="form-group  mb-3 wrap_form">
+        <p>
+        <!-- <label for="exampleInputEmail1">English to Indonesia</label> -->
+
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="lang_selector" value="en" id="radio_btn_id_eng">
+          <label class="form-check-label" for="radio_btn_id_eng">
+            Indonesia to English
+          </label>
+        </div>
+        <div class="form-check form-check-bottom">
+          <input class="form-check-input" type="radio" name="lang_selector" value="id" id="radio_btn_eng_id" checked>
+          <label class="form-check-label" for="radio_btn_eng_id">
+            English to Indonesia
+          </label>
+        </div>
+        <P>
+        <input type="text" class="form-control" id="translateText" aria-describedby="emailHelp" placeholder="Translate text here">
+        <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+      </div>
+
+    <div class="form-group  mb-3 wrap_form">
+    <p id="translated_test"></p>
+    <button type="Translate" class="btn btn-secondary" onclick="loadDoc()">Translate Text</button>
+    </div>
+  </center>
+</section>
+
+
+<script>
+function loadDoc() {
+  const xhttp = new XMLHttpRequest();
+  
+  var text_to_translate = document.getElementById("translateText").value;
+  var radios = document.getElementsByName("lang_selector");
+  for (var i = 0, length = radios.length; i < length; i++) {
+    if (radios[i].checked) {
+      // do whatever you want with the checked radio
+      // alert(radios[i].value);
+      var lang_to_translate = radios[i].value
+      // only one radio can be logically checked, don't check the rest
+      break;
+    }
+  }
+  
+  xhttp.onload = function() {
+    
+    document.getElementById("translated_test").innerHTML = `<div class="card text-white bg-secondary mb-3" ><div class="card-body"> ${this.responseText} </div></div>`;
+  }
+  
+  xhttp.open("POST", "translate.asp");
+  xhttp.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
+  
+  xhttp.send(JSON.stringify({ text_to_translate: text_to_translate, lang_to_translate: lang_to_translate}));
+
+}
+
+</script>

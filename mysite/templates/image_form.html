@@ -1,0 +1,15 @@
+
+
+<form method="post" enctype='multipart/form-data'>
+    {% csrf_token %}
+
+    <div class="mb-3 wrap_form" href="#essay_grader">
+
+    <label for="formFileSm" class="form-label">Upload image instead: </label>
+    <input class="form-control img_upload_box" name = "img_essay" id="formFileSm" type="file">
+
+    <button type="submit" class="btn btn-secondary" name="image_upload">Upload Image</button>
+
+    </div>
+
+</form>

@@ -1,0 +1,49 @@
+<section class="page-section bg-primary text-white mb-0" id="essay_prompter">
+  <center>
+    <h1 class = "section_title page-section-heading">Essay Prompter</h1>
+
+    <!-- Icon Divider-->
+    <div class="divider-custom">
+        <div class="divider-custom-line"></div>
+        <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+        <div class="divider-custom-line"></div>
+    </div>
+
+    <div class="form-group  mb-3 wrap_form">
+        <p>
+        <!-- <label for="exampleInputEmail1">English to Indonesia</label> -->
+
+        <label for="exampleInputEmail1">NEED inspiration!! Try to prompt meeeee</label>
+        <P>
+        <input type="text" class="form-control" id="essayPromptText" aria-describedby="emailHelp" placeholder="Essay prompt here">
+        <small id="emailHelp" class="form-text text-muted">Based on cutting edge generative transformer machine learning model</small>
+      </div>
+
+    <div class="form-group  mb-3 wrap_form">
+    <p id="prompt_result"></p>
+    <button type="Translate" class="btn btn-secondary" onclick="promptDoc()">Prompt Text</button>
+    </div>
+  </center>
+</section>
+
+
+<script>
+function promptDoc() {
+  const xhttp = new XMLHttpRequest();
+  
+  var text_to_prompt = document.getElementById("essayPromptText").value;
+  
+  
+  xhttp.onload = function() {
+    
+    document.getElementById("prompt_result").innerHTML = `<div class="card text-white bg-secondary mb-3" ><div class="card-body"> ${this.responseText} </div></div>`;
+  }
+  
+  xhttp.open("POST", "prompter.asp");
+  xhttp.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
+  
+  xhttp.send(text_to_prompt);
+
+}
+
+</script>

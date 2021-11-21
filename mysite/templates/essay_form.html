@@ -1,0 +1,52 @@
+<section class="page-section mb-0" id="essay_grader">
+  <center>
+    <h1 class = "section_title page-section-heading" >
+      Get your Gradesss
+    </h1>
+
+  <!-- Icon Divider-->
+  <div class="divider-custom">
+      <div class="divider-custom-line"></div>
+      <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+      <div class="divider-custom-line"></div>
+  </div>
+  <form class = "essay_insert_form" method="post">
+    {% csrf_token %}
+    <div class="mb-3 wrap_form" href="#essay_grader" id = "essay_grader">
+      <label for="text" class="form-label">Essay:</label>
+      <textarea name = "essay" class="form-control z-depth-1" id="exampleInputEmail1" holder="Write your essay here..." rows="6"></textarea>
+      <div id="emailHelp" class="form-text">Between you and me, I will never share your essay with anyone else.</div>
+      <center>
+      <button type="submit" class="btn btn-secondary">Submit</button>
+      </center>
+
+    </div>
+
+    <!-- <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Password</label>
+      <input type="password" class="form-control" id="exampleInputPassword1">
+    </div>
+    <div class="mb-3 form-check">
+      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+      <label class="form-check-label" for="exampleCheck1">Check me out</label>
+    </div> -->
+    <!-- <div class="custom-file">
+        <input type="file" class="custom-file-input" id="validatedCustomFile" required>
+        <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
+        <div class="invalid-feedback">Example invalid custom file feedback</div>
+      </div>
+    </div> -->
+
+
+  </form>
+  {% include 'image_form.html'%}
+  </center>
+</section>
+<!-- {%if posts is None%}
+    <h1>None<h1>
+{% else %}
+    {%for post in posts%}
+        <h1> {{post.text}}<h1>
+        <h1>content<h1>
+    {%endfor%}
+{%endif%} -->

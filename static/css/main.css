@@ -1,0 +1,37 @@
+/* .shadow-textarea textarea.form-control::placeholder {
+    font-weight: 300;
+  } */
+  /* .shadow-textarea textarea.form-control {
+    padding-left: 0.8rem;
+  } */
+  .mt-0 {
+    margin-top: 10 !important;
+  }
+  
+  .mb-3 {
+    margin-top:  10px;
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+  .btn{
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .masthead {
+    padding-top: calc(74px);
+    padding-bottom: 0rem;
+  }
+  
+  @media (min-width: 992px) {
+    .masthead {
+      padding-top: calc(104px);
+      padding-bottom: 0rem;
+    }
+    .form-check-bottom{
+        padding-bottom: 15px;
+    }
+
+
+}
+  

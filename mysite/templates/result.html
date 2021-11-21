@@ -1,0 +1,39 @@
+<!-- {% extends 'base.html' %} -->
+
+{% block title %}Result {% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+      Your Essay
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">SCORE: 
+        {%if analysis is None%}
+        None
+        {% else %}
+            {%for element in analysis%}
+                {{element.grade}}
+                
+            {%endfor%}
+        {%endif%}
+      </h5>
+      <p class="card-text">
+
+          {%if analysis is None%}
+            None
+            {% else %}
+                {%for element in analysis%}
+                    {{element.text|safe }}
+                    <div class= mt-0>
+                    {{element.table|safe }}
+                    </div>
+                {%endfor%}
+            {%endif%}
+            
+        </p>
+      <a href="" class="btn btn-primary">Home</a>
+    </div>
+  </div>
+
+{% endblock %}
